@@ -62,7 +62,7 @@ export default function SignaturesHubPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#E8E8E3]">
+      <div className="flex items-center gap-2 border-b border-[#E8E8E3] overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab("pending")}
           className={`flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 transition-all cursor-pointer ${
@@ -110,7 +110,7 @@ export default function SignaturesHubPage() {
                 {pendingSigs.map((sig) => (
                   <div
                     key={sig.id}
-                    className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#FAF9F5] transition-colors"
+                    className="p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#FAF9F5] transition-colors"
                   >
                     <div className="space-y-1.5 flex-1 min-w-0">
                       <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ export default function SignaturesHubPage() {
                 {signedSigs.map((sig) => (
                   <div
                     key={sig.id}
-                    className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#FAF9F5] transition-colors"
+                    className="p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#FAF9F5] transition-colors"
                   >
                     <div className="space-y-1.5 flex-1 min-w-0">
                       <div className="flex items-center gap-2">

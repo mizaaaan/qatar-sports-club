@@ -92,7 +92,7 @@ export default function AnnouncementsPage() {
             <article
               key={item.id}
               id={item.id}
-              className="bg-white rounded-2xl border border-[#E8E8E3] p-8 shadow-sm hover:border-black transition-all space-y-4"
+              className="bg-white rounded-2xl border border-[#E8E8E3] p-5 sm:p-8 shadow-sm hover:border-black transition-all space-y-4"
             >
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-neutral-100 pb-3 text-xs">
                 <div className="flex items-center gap-2">
@@ -122,7 +122,7 @@ export default function AnnouncementsPage() {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+              <div className="pt-3 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-neutral-500">
                 <span className="font-medium">
                   {isArabic ? "جهة الإصدار: " : "Issued by: "}
                   <strong className="text-neutral-800">

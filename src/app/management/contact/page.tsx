@@ -137,7 +137,7 @@ export default function ContactPage() {
             </div>
 
             {/* Right Column: Inquiries Form */}
-            <div className="lg:col-span-7 bg-white rounded-2xl border border-[#E8E8E3] p-8 shadow-sm">
+            <div className="lg:col-span-7 bg-white rounded-2xl border border-[#E8E8E3] p-5 sm:p-8 shadow-sm">
               <h2 className="text-xl font-bold text-[#171717] mb-2">
                 {isArabic ? "نموذج التواصل والاستفسارات الإدارية" : "Administrative Inquiry & Contact"}
               </h2>

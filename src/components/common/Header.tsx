@@ -87,7 +87,7 @@ export function Header() {
       {/* Main navigation bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/management" className="group flex items-center gap-3">
+        <Link href="/management" className="group flex items-center gap-2 sm:gap-3 min-w-0 max-w-[70%] sm:max-w-none">
           <QscLogo size="md" showText={true} isArabic={isArabic} />
         </Link>
 

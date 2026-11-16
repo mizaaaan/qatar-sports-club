@@ -207,7 +207,7 @@ export default function TasksPage() {
       {/* Create Task Modal */}
       {createModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-lg w-full p-6 text-neutral-800 space-y-4">
+          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-lg w-full p-4 sm:p-6 text-neutral-800 space-y-4">
             <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
               <h3 className="text-base font-bold text-neutral-900">
                 {isArabic ? "تكليف إداري جديد" : "Assign New Management Directive"}
@@ -249,7 +249,7 @@ export default function TasksPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="font-bold text-neutral-700 block mb-1">
                     {isArabic ? "المسؤول المكلف" : "Assign To Officer"}
@@ -280,7 +280,7 @@ export default function TasksPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="font-bold text-neutral-700 block mb-1">Priority</label>
                   <select

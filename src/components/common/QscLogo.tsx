@@ -38,14 +38,14 @@ export function QscLogo({
       </div>
 
       {showText && (
-        <div className="flex flex-col">
-          <span className="text-xs uppercase tracking-widest text-qsc-yellow font-bold font-sans">
+        <div className="flex flex-col min-w-0">
+          <span className="text-[10px] sm:text-xs uppercase tracking-widest text-qsc-yellow font-bold font-sans truncate">
             {isArabic ? "دولة قطر" : "State of Qatar"}
           </span>
-          <span className="text-base md:text-lg font-black tracking-tight text-white leading-tight">
+          <span className="text-sm sm:text-base md:text-lg font-black tracking-tight text-white leading-tight truncate">
             {isArabic ? "نادي قطر الرياضي" : "Qatar Sports Club"}
           </span>
-          <span className="text-[10px] tracking-wider text-neutral-400 font-medium uppercase">
+          <span className="hidden sm:block text-[9px] sm:text-[10px] tracking-wider text-neutral-400 font-medium uppercase truncate">
             {isArabic ? "الملك — تأسس ١٩٥٩" : "The Kings — Est. 1959"}
           </span>
         </div>

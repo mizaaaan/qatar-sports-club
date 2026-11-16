@@ -95,7 +95,7 @@ export function PortalHeader({ onToggleSidebar }: PortalHeaderProps) {
           </button>
 
           {roleDropdownOpen && (
-            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-72 rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
+            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-[calc(100vw-2rem)] sm:w-72 max-w-xs rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-150">
               <div className="px-3 py-2 border-b border-neutral-800 mb-1">
                 <p className="text-xs font-bold text-qsc-yellow uppercase tracking-wider">
                   {isArabic ? "محاكي الأدوار والصلاحيات" : "Role Simulator"}
@@ -169,7 +169,7 @@ export function PortalHeader({ onToggleSidebar }: PortalHeaderProps) {
           </button>
 
           {notifDropdownOpen && (
-            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-80 sm:w-96 rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-3 z-50 animate-in fade-in zoom-in-95 duration-150">
+            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-[calc(100vw-2rem)] sm:w-96 max-w-sm rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-3 z-50 animate-in fade-in zoom-in-95 duration-150">
               <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
                 <span className="text-xs font-bold text-white uppercase tracking-wider">
                   {t.common.notifications} ({unreadNotificationsCount} {t.common.unread})
@@ -260,7 +260,7 @@ export function PortalHeader({ onToggleSidebar }: PortalHeaderProps) {
           </button>
 
           {profileDropdownOpen && (
-            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-64 rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-3 z-50">
+            <div className="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-[calc(100vw-2rem)] sm:w-64 max-w-xs rounded-xl bg-[#141414] border border-[#2E2E2E] shadow-2xl p-3 z-50">
               <div className="border-b border-neutral-800 pb-3 mb-2">
                 <p className="text-xs font-bold text-white">{isArabic ? user?.nameAr : user?.nameEn}</p>
                 <p className="text-[11px] text-qsc-yellow font-medium">

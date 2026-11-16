@@ -141,23 +141,23 @@ export default function GovernanceReportsPage() {
           </h3>
 
           <div className="space-y-3 text-xs">
-            <div className="flex justify-between items-center py-2 border-b border-neutral-50">
+            <div className="flex justify-between items-center py-2 border-b border-neutral-50 gap-2">
               <span className="font-semibold text-neutral-800">
                 Facilities & Suheim Stadium Operations
               </span>
-              <span className="font-mono font-bold">485,000 QAR</span>
+              <span className="font-mono font-bold whitespace-nowrap">485,000 QAR</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-neutral-50">
+            <div className="flex justify-between items-center py-2 border-b border-neutral-50 gap-2">
               <span className="font-semibold text-neutral-800">Football Sector Management</span>
-              <span className="font-mono font-bold">720,000 QAR</span>
+              <span className="font-mono font-bold whitespace-nowrap">720,000 QAR</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-neutral-50">
+            <div className="flex justify-between items-center py-2 border-b border-neutral-50 gap-2">
               <span className="font-semibold text-neutral-800">Media, Digital & Marketing</span>
-              <span className="font-mono font-bold">950,000 QAR</span>
+              <span className="font-mono font-bold whitespace-nowrap">950,000 QAR</span>
             </div>
-            <div className="flex justify-between items-center py-2 border-b border-neutral-50">
+            <div className="flex justify-between items-center py-2 border-b border-neutral-50 gap-2">
               <span className="font-semibold text-neutral-800">Human Capital Development</span>
-              <span className="font-mono font-bold">145,000 QAR</span>
+              <span className="font-mono font-bold whitespace-nowrap">145,000 QAR</span>
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function GovernanceReportsPage() {
 
           <div className="space-y-3 text-xs">
             <div className="space-y-1">
-              <div className="flex justify-between text-neutral-600">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-neutral-600 gap-0.5 sm:gap-2">
                 <span>Department Manager Endorsement</span>
                 <span className="font-bold text-neutral-900">4 Hours (Target &lt; 24h)</span>
               </div>
@@ -180,7 +180,7 @@ export default function GovernanceReportsPage() {
             </div>
 
             <div className="space-y-1">
-              <div className="flex justify-between text-neutral-600">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-neutral-600 gap-0.5 sm:gap-2">
                 <span>Administrative Verification</span>
                 <span className="font-bold text-neutral-900">12 Hours (Target &lt; 48h)</span>
               </div>
@@ -190,7 +190,7 @@ export default function GovernanceReportsPage() {
             </div>
 
             <div className="space-y-1">
-              <div className="flex justify-between text-neutral-600">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-neutral-600 gap-0.5 sm:gap-2">
                 <span>General Manager Review</span>
                 <span className="font-bold text-neutral-900">18 Hours (Target &lt; 48h)</span>
               </div>
@@ -200,7 +200,7 @@ export default function GovernanceReportsPage() {
             </div>
 
             <div className="space-y-1">
-              <div className="flex justify-between text-neutral-600">
+              <div className="flex flex-col sm:flex-row sm:justify-between text-neutral-600 gap-0.5 sm:gap-2">
                 <span>Presidential Ratification</span>
                 <span className="font-bold text-neutral-900">24 Hours (Target &lt; 72h)</span>
               </div>

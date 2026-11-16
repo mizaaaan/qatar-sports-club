@@ -160,7 +160,7 @@ export default function ApplicationDetailPage({ params }: PageProps) {
       </div>
 
       {/* Multi-Level Workflow Engine Visual Hierarchy */}
-      <div className="bg-white rounded-2xl border border-[#E8E8E3] p-6 sm:p-8 shadow-sm space-y-6">
+      <div className="bg-white rounded-2xl border border-[#E8E8E3] p-4 sm:p-6 lg:p-8 shadow-sm space-y-6">
         <div className="flex items-center justify-between border-b border-neutral-100 pb-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-[#666666]">
@@ -180,7 +180,7 @@ export default function ApplicationDetailPage({ params }: PageProps) {
         </div>
 
         {/* Steps Progress Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative">
           {application.workflow.map((step, idx) => {
             const isApproved = step.status === "approved";
             const isCurrent = step.status === "current";
@@ -341,7 +341,7 @@ export default function ApplicationDetailPage({ params }: PageProps) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: Full Application Specs */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="bg-white rounded-2xl border border-[#E8E8E3] p-8 shadow-sm space-y-6 text-xs">
+          <div className="bg-white rounded-2xl border border-[#E8E8E3] p-5 sm:p-8 shadow-sm space-y-6 text-xs">
             <h3 className="text-base font-bold text-neutral-900 border-b border-neutral-100 pb-3">
               {isArabic ? "بيانات ومبررات المعاملة" : "Application Justification & Scope"}
             </h3>

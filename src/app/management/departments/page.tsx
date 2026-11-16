@@ -169,13 +169,13 @@ export default function DepartmentsPage() {
       {/* Departments Grid */}
       <section className="py-14 flex-1">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {departmentsList.map((dept) => {
               const Icon = dept.icon;
               return (
                 <div
                   key={dept.id}
-                  className="bg-white rounded-2xl border border-[#E8E8E3] p-7 shadow-sm hover:border-black transition-all flex flex-col justify-between"
+                  className="bg-white rounded-2xl border border-[#E8E8E3] p-5 sm:p-7 shadow-sm hover:border-black transition-all flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">

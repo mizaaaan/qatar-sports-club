@@ -131,7 +131,7 @@ export default function BoardOfDirectorsPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* President */}
             <div className="bg-white rounded-2xl border border-[#E8E8E3] overflow-hidden shadow-sm hover:border-black transition-all group flex flex-col justify-between">
               <div>
@@ -282,7 +282,7 @@ export default function BoardOfDirectorsPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {boardCommittees.map((com, idx) => (
               <div key={idx} className="p-6 rounded-xl bg-[#FAF9F5] border border-[#E8E8E3] space-y-3">
                 <div className="w-9 h-9 rounded-lg bg-[#0A0A0A] text-qsc-yellow flex items-center justify-center font-bold text-xs">

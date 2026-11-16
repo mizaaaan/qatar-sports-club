@@ -208,7 +208,7 @@ export default function PortalDashboardPage() {
                 <Link
                   key={app.id}
                   href={`/portal/applications/${app.id}`}
-                  className="p-4 flex items-center justify-between hover:bg-[#FAF9F5] transition-colors gap-4 block"
+                  className="p-3 sm:p-4 flex items-center justify-between hover:bg-[#FAF9F5] transition-colors gap-3 sm:gap-4"
                 >
                   <div className="space-y-1 min-w-0">
                     <div className="flex items-center gap-2">

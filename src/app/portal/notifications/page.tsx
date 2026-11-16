@@ -86,7 +86,7 @@ export default function NotificationsCenterPage() {
           notifications.map((n) => (
             <div
               key={n.id}
-              className={`p-5 flex items-start justify-between gap-4 transition-colors ${
+              className={`p-4 sm:p-5 flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4 transition-colors ${
                 n.read ? "bg-white" : "bg-neutral-50/70"
               } hover:bg-[#FAF9F5]`}
             >

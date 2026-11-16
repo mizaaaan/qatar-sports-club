@@ -113,7 +113,7 @@ export default function PortalSettingsPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs">
             <button
               type="button"
               onClick={() => setLanguage("en")}

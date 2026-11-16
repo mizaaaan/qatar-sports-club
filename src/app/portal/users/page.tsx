@@ -103,7 +103,7 @@ export default function UserManagementPage() {
           {isArabic ? "مصفوفة الصلاحيات والحوكمة المعتمدة" : "Configured Permission & Role Matrix"}
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {rolesMatrix.slice(0, 4).map((rm) => (
             <div key={rm.role} className="p-4 rounded-xl bg-[#FAF9F5] border border-[#E8E8E3] space-y-2 text-xs">
               <span className="font-bold text-neutral-900 block truncate">
@@ -142,7 +142,7 @@ export default function UserManagementPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left rtl:text-right text-xs">
+          <table className="w-full text-left rtl:text-right text-xs min-w-[650px]">
             <thead className="bg-[#FAF9F5] border-b border-[#E8E8E3] text-[11px] font-bold uppercase tracking-wider text-neutral-500">
               <tr>
                 <th className="py-3.5 px-4">{isArabic ? "المسؤول" : "Officer"}</th>

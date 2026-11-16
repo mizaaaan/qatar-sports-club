@@ -191,7 +191,7 @@ export default function MeetingsPage() {
       {/* Meeting Detail Modal */}
       {selectedMeeting && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-xl w-full p-8 text-neutral-800 space-y-6 animate-in fade-in zoom-in-95">
+          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-xl w-full p-4 sm:p-6 lg:p-8 text-neutral-800 space-y-4 sm:space-y-6 animate-in fade-in zoom-in-95">
             <div className="flex items-start justify-between border-b border-neutral-100 pb-4">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black text-qsc-yellow">
@@ -263,7 +263,7 @@ export default function MeetingsPage() {
       {/* Schedule Meeting Modal */}
       {createModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-lg w-full p-6 text-neutral-800 space-y-4">
+          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-lg w-full p-4 sm:p-6 text-neutral-800 space-y-4">
             <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
               <h3 className="text-base font-bold text-neutral-900">
                 {isArabic ? "جدولة اجتماع إداري رسمي" : "Convene Official Meeting"}
@@ -305,7 +305,7 @@ export default function MeetingsPage() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="font-bold text-neutral-700 block mb-1">Date</label>
                   <input

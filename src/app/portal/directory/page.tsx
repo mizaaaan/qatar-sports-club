@@ -66,11 +66,11 @@ export default function InternalDirectoryPage() {
       </div>
 
       {/* Directory Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredUsers.map((officer) => (
           <div
             key={officer.id}
-            className="bg-white rounded-2xl border border-[#E8E8E3] p-6 shadow-sm hover:border-black transition-all flex flex-col justify-between space-y-4"
+            className="bg-white rounded-2xl border border-[#E8E8E3] p-5 sm:p-6 shadow-sm hover:border-black transition-all flex flex-col justify-between space-y-4"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">

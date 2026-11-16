@@ -172,7 +172,7 @@ export function PortalSidebar({ isOpen, onClose }: PortalSidebarProps) {
 
       {/* Sidebar container */}
       <aside
-        className={`fixed top-0 bottom-0 z-50 w-72 bg-[#0A0A0A] border-r rtl:border-r-0 rtl:border-l border-[#262626] text-white flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 z-50 w-72 max-w-[85vw] bg-[#0A0A0A] border-r rtl:border-r-0 rtl:border-l border-[#262626] text-white flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full rtl:translate-x-full"
         }`}
       >

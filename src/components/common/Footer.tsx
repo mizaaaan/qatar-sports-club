@@ -17,18 +17,18 @@ export function Footer() {
   const { t, isArabic } = useLanguage();
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#262626] text-neutral-300 pt-16 pb-12">
+    <footer className="bg-[#0A0A0A] border-t border-[#262626] text-neutral-300 pt-12 sm:pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-neutral-800">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-12 border-b border-neutral-800">
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="sm:col-span-2 lg:col-span-2 space-y-4">
             <QscLogo size="lg" showText={true} isArabic={isArabic} />
-            <p className="text-sm text-neutral-400 max-w-sm leading-relaxed mt-4">
+            <p className="text-xs sm:text-sm text-neutral-400 max-w-sm leading-relaxed mt-4">
               {isArabic
                 ? "نادي قطر الرياضي — الصرح الرياضي التاريخي العريق بدولة قطر (تأسس عام ١٩٥٩). الملقب بـ 'الملك'، ريادة في التميز الرياضي، الحوكمة المؤسسية والتحول الرقمي الإداري."
                 : "Qatar Sports Club — One of the historic pillars of sports excellence in the State of Qatar (Founded 1959). Known as 'The Kings', championing athletic prominence, institutional governance, and digital administrative innovation."}
             </p>
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex flex-wrap items-center gap-2 pt-2">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-qsc-yellow/10 text-qsc-yellow border border-qsc-yellow/30">
                 <ShieldCheck className="w-3.5 h-3.5" />
                 {isArabic ? "منظومة إدارية معتمدة وموثقة" : "Official Governance Portal"}
@@ -156,14 +156,14 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright & institutional disclosure */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-500 gap-4 text-center md:text-left rtl:md:text-right">
           <p>
             © {new Date().getFullYear()}{" "}
             {isArabic
               ? "نادي قطر الرياضي — كافة الحقوق الإدارية والمؤسسية محفوظة."
               : "Qatar Sports Club. All institutional rights reserved."}
           </p>
-          <div className="flex items-center gap-4 text-[11px] text-neutral-400">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[11px] text-neutral-400">
             <span>{isArabic ? "الألوان الرسمية: أصفر وأسود" : "Official Colors: Yellow & Black"}</span>
             <span>•</span>
             <span>{isArabic ? "نظام التوقيع والاعتماد المشفر" : "Cryptographically Signed & Audited"}</span>

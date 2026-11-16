@@ -50,7 +50,7 @@ export default function RootHomePage() {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.1] text-white">
                 {isArabic ? (
                   <>
                     ريادة مؤسسية وهيبة عريقة...{" "}
@@ -96,23 +96,23 @@ export default function RootHomePage() {
               </div>
 
               {/* Institutional Indicators */}
-              <div className="pt-8 grid grid-cols-3 gap-4 border-t border-neutral-800 max-w-lg mx-auto lg:mx-0">
+              <div className="pt-8 grid grid-cols-3 gap-2 sm:gap-4 border-t border-neutral-800 max-w-lg mx-auto lg:mx-0">
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-qsc-yellow">1959</p>
-                  <p className="text-xs text-neutral-400 font-medium">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-qsc-yellow">1959</p>
+                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
                     {isArabic ? "سنة التأسيس العريق" : "Club Foundation"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-white">100%</p>
-                  <p className="text-xs text-neutral-400 font-medium">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-white">100%</p>
+                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
                     {isArabic ? "أتمتة رقمية كاملة" : "Digital Workflows"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-qsc-yellow">2024–28</p>
-                  <p className="text-xs text-neutral-400 font-medium">
-                    {isArabic ? "الدورة الانتخابية الحالية" : "Electoral Term"}
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-qsc-yellow">2024–28</p>
+                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                    {isArabic ? "الدورة الانتخابية" : "Electoral Term"}
                   </p>
                 </div>
               </div>
@@ -122,7 +122,7 @@ export default function RootHomePage() {
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-full max-w-md">
                 {/* Golden Shield Frame */}
-                <div className="relative bg-[#141414] border border-[#262626] rounded-2xl p-8 shadow-2xl overflow-hidden group hover:border-qsc-yellow/40 transition-all duration-500">
+                <div className="relative bg-[#141414] border border-[#262626] rounded-2xl p-4 sm:p-6 lg:p-8 shadow-2xl overflow-hidden group hover:border-qsc-yellow/40 transition-all duration-500">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-qsc-yellow/10 rounded-full blur-2xl" />
                   
                   {/* Official Emblem Display */}
@@ -188,13 +188,13 @@ export default function RootHomePage() {
       </section>
 
       {/* Two Environments Showcase Grid */}
-      <section className="py-20 bg-[#0E0E0E] border-b border-neutral-800">
+      <section className="py-10 sm:py-14 lg:py-20 bg-[#0E0E0E] border-b border-neutral-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12 lg:mb-16 space-y-3">
             <span className="text-xs font-bold uppercase tracking-widest text-qsc-yellow">
               {isArabic ? "الهيكل المتكامل للمنظومة" : "Two Integrated Environments"}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">
               {isArabic
                 ? "بوابتان رقميتان... هوية مؤسسية موحدة"
                 : "Dual Digital Spheres, One Unified Sovereign Identity"}
@@ -208,7 +208,7 @@ export default function RootHomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Box 1: Public Management Showcase */}
-            <div className="group relative bg-[#141414] border border-neutral-800 rounded-2xl p-8 hover:border-neutral-600 transition-all flex flex-col justify-between">
+            <div className="group relative bg-[#141414] border border-neutral-800 rounded-2xl p-4 sm:p-6 lg:p-8 hover:border-neutral-600 transition-all flex flex-col justify-between">
               <div className="space-y-5">
                 <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center text-qsc-yellow border border-neutral-700">
                   <Globe className="w-6 h-6" />
@@ -259,7 +259,7 @@ export default function RootHomePage() {
             </div>
 
             {/* Box 2: Private Executive Portal */}
-            <div className="group relative bg-[#141414] border border-qsc-yellow/40 rounded-2xl p-8 hover:border-qsc-yellow transition-all flex flex-col justify-between shadow-xl">
+            <div className="group relative bg-[#141414] border border-qsc-yellow/40 rounded-2xl p-4 sm:p-6 lg:p-8 hover:border-qsc-yellow transition-all flex flex-col justify-between shadow-xl">
               <div className="space-y-5">
                 <div className="w-12 h-12 rounded-xl bg-qsc-yellow/10 flex items-center justify-center text-qsc-yellow border border-qsc-yellow/30">
                   <ShieldCheck className="w-6 h-6" />

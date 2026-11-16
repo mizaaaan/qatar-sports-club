@@ -109,7 +109,7 @@ export default function SignatureDetailPage({ params }: PageProps) {
       </div>
 
       {/* Main Document Preview Container (Official Letterhead Sheet) */}
-      <div className="bg-white rounded-2xl border border-[#E8E8E3] shadow-xl p-8 sm:p-14 space-y-8 relative overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#E8E8E3] shadow-xl p-4 sm:p-8 lg:p-14 space-y-6 sm:space-y-8 relative overflow-hidden">
         {/* Watermark Logo */}
         <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none">
           <Image
@@ -195,7 +195,7 @@ export default function SignatureDetailPage({ params }: PageProps) {
         </div>
 
         {/* Official Signatures Section */}
-        <div className="pt-8 border-t-2 border-neutral-200 grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+        <div className="pt-6 sm:pt-8 border-t-2 border-neutral-200 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 relative z-10">
           {/* Originating Party Box */}
           <div className="p-5 rounded-xl bg-[#FAF9F5] border border-[#E8E8E3] space-y-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block">

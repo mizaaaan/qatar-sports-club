@@ -222,7 +222,7 @@ export default function ManagementHomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl border border-[#E8E8E3] shadow-sm space-y-3">
               <div className="w-10 h-10 rounded-lg bg-[#0A0A0A] text-qsc-yellow flex items-center justify-center font-bold">
                 01
@@ -290,7 +290,7 @@ export default function ManagementHomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredNews.map((ann) => (
               <div
                 key={ann.id}

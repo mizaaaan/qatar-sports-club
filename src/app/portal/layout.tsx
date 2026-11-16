@@ -15,12 +15,12 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
       <PortalSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {/* Main Wrapper with Sidebar Offset */}
-      <div className="flex-1 flex flex-col lg:pl-72 rtl:lg:pl-0 rtl:lg:pr-72 transition-all duration-300">
+      <div className="flex-1 flex flex-col min-w-0 overflow-x-hidden lg:pl-72 rtl:lg:pl-0 rtl:lg:pr-72 transition-all duration-300">
         {/* Top Header */}
         <PortalHeader onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
         {/* Main View Area */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto min-w-0">
           {children}
         </main>
       </div>

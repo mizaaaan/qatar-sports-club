@@ -35,6 +35,21 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
     ctx.strokeStyle = "#0A0A0A";
   }, [activeTab]);
 
+  const getCoordinates = (
+    e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>,
+    canvas: HTMLCanvasElement
+  ) => {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const clientX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const clientY = "touches" in e ? e.touches[0].clientY : e.clientY;
+    return {
+      x: (clientX - rect.left) * scaleX,
+      y: (clientY - rect.top) * scaleY,
+    };
+  };
+
   const startDrawing = (e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -44,9 +59,7 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
     setIsDrawing(true);
     setHasDrawn(true);
 
-    const rect = canvas.getBoundingClientRect();
-    const x = "touches" in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-    const y = "touches" in e ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
+    const { x, y } = getCoordinates(e, canvas);
 
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -59,9 +72,7 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = "touches" in e ? e.touches[0].clientX - rect.left : e.clientX - rect.left;
-    const y = "touches" in e ? e.touches[0].clientY - rect.top : e.clientY - rect.top;
+    const { x, y } = getCoordinates(e, canvas);
 
     ctx.lineTo(x, y);
     ctx.stroke();
@@ -173,11 +184,11 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
 
       <div className="p-5 space-y-4">
         {/* Method Switcher Tabs */}
-        <div className="flex border-b border-neutral-200">
+        <div className="flex overflow-x-auto scrollbar-none border-b border-neutral-200">
           <button
             type="button"
             onClick={() => setActiveTab("drawn")}
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold transition-all border-b-2 cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
               activeTab === "drawn"
                 ? "border-qsc-yellow text-black bg-neutral-50"
                 : "border-transparent text-neutral-500 hover:text-black"
@@ -190,7 +201,7 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
           <button
             type="button"
             onClick={() => setActiveTab("typed")}
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold transition-all border-b-2 cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
               activeTab === "typed"
                 ? "border-qsc-yellow text-black bg-neutral-50"
                 : "border-transparent text-neutral-500 hover:text-black"
@@ -203,7 +214,7 @@ export function SignatureCanvas({ onSignComplete, onCancel, documentTitle }: Sig
           <button
             type="button"
             onClick={() => setActiveTab("certificate")}
-            className={`flex items-center gap-2 px-4 py-2 text-xs font-bold transition-all border-b-2 cursor-pointer ${
+            className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 text-xs font-bold transition-all border-b-2 whitespace-nowrap cursor-pointer ${
               activeTab === "certificate"
                 ? "border-qsc-yellow text-black bg-neutral-50"
                 : "border-transparent text-neutral-500 hover:text-black"

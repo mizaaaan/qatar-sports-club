@@ -108,7 +108,7 @@ export default function AuditLogsPage() {
       {/* Audit Log Table */}
       <div className="bg-white rounded-2xl border border-[#E8E8E3] shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left rtl:text-right text-xs">
+          <table className="w-full text-left rtl:text-right text-xs min-w-[700px]">
             <thead className="bg-[#FAF9F5] border-b border-[#E8E8E3] text-[11px] font-bold uppercase tracking-wider text-neutral-500">
               <tr>
                 <th className="py-3.5 px-4">{t.common.timestamp}</th>

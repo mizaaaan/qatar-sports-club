@@ -100,7 +100,7 @@ export default function MyApplicationsPage() {
                     {isArabic ? app.descriptionAr : app.descriptionEn}
                   </p>
 
-                  <div className="pt-2 flex items-center gap-4 text-xs text-neutral-600">
+                  <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-neutral-600">
                     <span>
                       {isArabic ? "القيمة المالية: " : "Amount: "}
                       <strong className="text-black">
@@ -115,7 +115,7 @@ export default function MyApplicationsPage() {
                   </div>
                 </div>
 
-                <div className="flex sm:flex-col md:flex-row items-center gap-3 flex-shrink-0">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 flex-shrink-0">
                   <StatusBadge status={app.status} />
 
                   <Link

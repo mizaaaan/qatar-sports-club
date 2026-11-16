@@ -107,7 +107,7 @@ export default function LeadershipProfilePage({ params }: PageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* Left Card: Portrait and Contact */}
             <div className="lg:col-span-4 bg-white rounded-2xl border border-[#E8E8E3] p-6 shadow-sm space-y-6">
-              <div className="relative h-80 rounded-xl overflow-hidden border border-neutral-200 bg-neutral-900">
+              <div className="relative h-64 sm:h-80 rounded-xl overflow-hidden border border-neutral-200 bg-neutral-900">
                 <Image
                   src={officer.avatar}
                   alt={officer.nameEn}
@@ -202,7 +202,7 @@ export default function LeadershipProfilePage({ params }: PageProps) {
                 <h3 className="text-lg font-bold text-[#171717] border-b border-neutral-100 pb-3">
                   {isArabic ? "المسؤوليات والصلاحيات الإدارية" : "Institutional Responsibilities"}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {mockResponsibilities.map((resp, idx) => (
                     <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF9F5] border border-[#E8E8E3]">
                       <CheckCircle2 className="w-4 h-4 text-neutral-800 flex-shrink-0 mt-0.5" />

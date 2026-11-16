@@ -91,9 +91,9 @@ export default function NewApplicationPage() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#E8E8E3] p-8 shadow-sm space-y-6 text-xs">
+      <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#E8E8E3] p-4 sm:p-6 lg:p-8 shadow-sm space-y-6 text-xs">
         {/* Category & Priority Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block font-bold text-neutral-800 mb-1.5">
               {isArabic ? "تصنيف المعاملة" : "Application Category"} *
@@ -131,7 +131,7 @@ export default function NewApplicationPage() {
         </div>
 
         {/* Title Dual Languages */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block font-bold text-neutral-800 mb-1.5">
               Application Subject (English) *
@@ -162,7 +162,7 @@ export default function NewApplicationPage() {
         </div>
 
         {/* Department & Amount */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block font-bold text-neutral-800 mb-1.5">
               {t.common.department} *
@@ -189,7 +189,7 @@ export default function NewApplicationPage() {
         </div>
 
         {/* Detailed Descriptions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block font-bold text-neutral-800 mb-1.5">
               Technical Justification & Details (English) *

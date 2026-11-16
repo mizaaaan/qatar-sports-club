@@ -246,10 +246,13 @@ export default function OrgChartPage() {
       </section>
 
       {/* Main Interactive Canvas */}
-      <section className="flex-1 py-12 overflow-x-auto overflow-y-hidden">
+      <section className="flex-1 py-8 sm:py-12 overflow-x-auto overflow-y-hidden">
+        <div className="md:hidden flex items-center justify-center gap-1.5 text-xs text-neutral-500 mb-2 px-4">
+          <span>{isArabic ? "↔ اسحب أفقياً لاستعراض الهيكل الشجري" : "↔ Swipe horizontally to explore org tree"}</span>
+        </div>
         <div className="max-w-[1600px] mx-auto px-4">
           <div
-            className="flex justify-center transition-transform duration-200 origin-top min-w-[900px] py-8"
+            className="flex justify-center transition-transform duration-200 origin-top min-w-[900px] py-4 sm:py-8"
             style={{ transform: `scale(${zoomLevel})` }}
           >
             <TreeNode node={chartData} />
@@ -260,7 +263,7 @@ export default function OrgChartPage() {
       {/* Node Details Drawer Modal */}
       {selectedNode && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-md w-full p-6 text-neutral-800 space-y-4 animate-in fade-in zoom-in-95">
+          <div className="bg-white rounded-2xl border border-neutral-200 shadow-2xl max-w-md w-full p-4 sm:p-6 text-neutral-800 space-y-4 animate-in fade-in zoom-in-95">
             <div className="flex items-start justify-between border-b border-neutral-100 pb-4">
               <div className="flex items-center gap-3">
                 <Image
