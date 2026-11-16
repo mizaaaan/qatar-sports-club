@@ -25,7 +25,7 @@ export function QscLogo({
   const { width, height } = sizeMap[size];
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-3 select-none flex-shrink-0 ${className}`}>
       <div className="relative flex-shrink-0" style={{ width, height }}>
         <Image
           src="/QSC-Emblem-RGB.svg"

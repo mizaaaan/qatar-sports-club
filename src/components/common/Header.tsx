@@ -27,7 +27,7 @@ export function Header() {
   const [leadershipDropdownOpen, setLeadershipDropdownOpen] = useState(false);
 
   const navLinks = [
-    { href: "/management", label: t.home },
+    { href: "/management", label: t.home, isHome: true },
     {
       label: t.nav.leadership,
       isDropdown: true,
@@ -49,7 +49,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-[#0A0A0A] border-b border-[#262626] backdrop-blur-md bg-opacity-95 text-white transition-all">
       {/* Top institutional strip */}
       <div className="hidden lg:block border-b border-white/10 text-[11px] py-1.5 px-6 bg-black/60 text-neutral-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl 2xl:max-w-screen-2xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 font-medium text-neutral-300">
               <span className="w-1.5 h-1.5 rounded-full bg-qsc-yellow animate-pulse" />
@@ -85,14 +85,21 @@ export function Header() {
       </div>
 
       {/* Main navigation bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/management" className="group flex items-center gap-2 sm:gap-3 min-w-0 max-w-[70%] sm:max-w-none">
-          <QscLogo size="md" showText={true} isArabic={isArabic} />
-        </Link>
+      <div className="max-w-7xl 2xl:max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3 xl:gap-6">
+        {/* Brand Logo & Institutional Divider */}
+        <div className="flex items-center gap-3 xl:gap-4 flex-shrink-0 min-w-0">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 sm:gap-3 flex-shrink-0"
+            title="Qatar Sports Club"
+          >
+            <QscLogo size="md" showText={true} isArabic={isArabic} />
+          </Link>
+          <div className="hidden lg:block h-8 w-px bg-white/15 flex-shrink-0" aria-hidden="true" />
+        </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-shrink min-w-0">
           {navLinks.map((item, idx) => {
             if (item.isDropdown) {
               return (
@@ -102,13 +109,13 @@ export function Header() {
                   onMouseEnter={() => setLeadershipDropdownOpen(true)}
                   onMouseLeave={() => setLeadershipDropdownOpen(false)}
                 >
-                  <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-neutral-300 hover:text-white transition-colors cursor-pointer rounded-md hover:bg-white/5">
+                  <button className="flex items-center gap-1 px-2 xl:px-3 py-1.5 xl:py-2 text-xs xl:text-sm font-medium text-neutral-300 hover:text-white transition-colors cursor-pointer rounded-md hover:bg-white/5 whitespace-nowrap">
                     <span>{item.label}</span>
-                    <ChevronDown className="w-4 h-4 text-neutral-400" />
+                    <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-neutral-400" />
                   </button>
 
                   {leadershipDropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-60 rounded-lg bg-[#141414] border border-[#2E2E2E] shadow-2xl py-2 z-50">
+                    <div className="absolute top-full left-0 rtl:left-auto rtl:right-0 mt-1 w-60 rounded-lg bg-[#141414] border border-[#2E2E2E] shadow-2xl py-2 z-50">
                       {item.items?.map((sub, sIdx) => {
                         const Icon = sub.icon;
                         const isSubActive = pathname === sub.href;
@@ -134,11 +141,14 @@ export function Header() {
             }
 
             const isActive = pathname === item.href;
+            const isHome = item.isHome;
             return (
               <Link
                 key={idx}
                 href={item.href!}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors rounded-md ${
+                className={`relative px-2 xl:px-3 py-1.5 xl:py-2 text-xs xl:text-sm font-medium transition-colors rounded-md whitespace-nowrap ${
+                  isHome ? "hidden xl:inline-flex" : "inline-flex"
+                } ${
                   isActive
                     ? "text-qsc-yellow font-bold bg-white/5"
                     : "text-neutral-300 hover:text-white hover:bg-white/5"
@@ -146,7 +156,7 @@ export function Header() {
               >
                 {item.label}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-0.5 bg-qsc-yellow rounded-full" />
+                  <span className="absolute bottom-0 left-2 right-2 xl:left-3 xl:right-3 h-0.5 bg-qsc-yellow rounded-full" />
                 )}
               </Link>
             );
@@ -154,14 +164,14 @@ export function Header() {
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
           <Link
             href="/portal"
-            className="group flex items-center gap-2 bg-qsc-yellow text-[#0A0A0A] font-bold px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider shadow-lg hover:bg-white transition-all transform hover:-translate-y-0.5"
+            className="group flex items-center gap-2 bg-qsc-yellow text-[#0A0A0A] font-bold px-3.5 xl:px-5 py-2 xl:py-2.5 rounded-lg text-xs uppercase tracking-wider shadow-lg hover:bg-white transition-all transform hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0"
           >
             <ShieldCheck className="w-4 h-4" />
             <span>{t.enterPortal}</span>
-            <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
           </Link>
         </div>
 
