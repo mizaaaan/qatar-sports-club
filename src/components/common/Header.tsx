@@ -39,6 +39,7 @@ export function Header() {
     },
     { href: "/management/departments", label: t.nav.departments },
     { href: "/management/org-chart", label: t.nav.orgChart },
+    { href: "/academy", label: t.nav.academy },
     { href: "/management/announcements", label: t.nav.announcements },
     { href: "/management/contact", label: t.nav.contact },
   ];
@@ -241,6 +242,13 @@ export function Header() {
               className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
             >
               {t.nav.orgChart}
+            </Link>
+            <Link
+              href="/academy"
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2.5 rounded-md text-sm font-medium text-qsc-yellow font-bold hover:bg-neutral-800"
+            >
+              {t.nav.academy}
             </Link>
             <Link
               href="/management/announcements"

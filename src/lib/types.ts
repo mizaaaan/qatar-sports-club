@@ -223,11 +223,156 @@ export interface AuditLogItem {
   actorNameAr: string;
   actorRole: Role;
   action: string;
-  actionType: "auth" | "approval" | "signature" | "document" | "task" | "security";
+  actionType: "auth" | "approval" | "signature" | "document" | "task" | "security" | "academy";
   targetEntity: string;
   ipAddress: string;
   status: "success" | "warning" | "failure";
   details: string;
+}
+
+// ==========================================
+// YOUTH SPORTS ACADEMY TYPES
+// ==========================================
+
+export type AcademySportId =
+  | "football"
+  | "swimming"
+  | "basketball"
+  | "table_tennis"
+  | "martial_arts";
+
+export type AcademyAgeGroup = "u7" | "u10" | "u14" | "u18";
+
+export type AcademyRegistrationStatus =
+  | "pending"
+  | "under_review"
+  | "approved"
+  | "rejected"
+  | "medical_pending"
+  | "payment_pending"
+  | "payment_verified"
+  | "waitlisted";
+
+export interface AcademyProgram {
+  id: string;
+  sportId: AcademySportId;
+  ageGroup: AcademyAgeGroup;
+  titleEn: string;
+  titleAr: string;
+  ageRange: string;
+  scheduleEn: string;
+  scheduleAr: string;
+  timingEn: string;
+  timingAr: string;
+  locationEn: string;
+  locationAr: string;
+  monthlyFeeQar: number;
+  seasonFeeQar: number;
+  capacity: number;
+  enrolledCount: number;
+  leadCoachEn: string;
+  leadCoachAr: string;
+  coachLicenseEn: string;
+  coachLicenseAr: string;
+  prerequisitesEn: string;
+  prerequisitesAr: string;
+  uniformIncluded: boolean;
+}
+
+export interface AcademySport {
+  id: AcademySportId;
+  nameEn: string;
+  nameAr: string;
+  taglineEn: string;
+  taglineAr: string;
+  descriptionEn: string;
+  descriptionAr: string;
+  iconName: string;
+  venueEn: string;
+  venueAr: string;
+  badgeColor: string;
+  programs: AcademyProgram[];
+}
+
+export interface AcademyPlayerInfo {
+  fullNameEn: string;
+  fullNameAr: string;
+  dateOfBirth: string;
+  gender: "male" | "female";
+  nationalityEn: string;
+  nationalityAr: string;
+  qidOrPassport: string;
+  schoolNameEn?: string;
+  schoolNameAr?: string;
+  previousExperienceEn?: string;
+  previousExperienceAr?: string;
+  jerseySize: "XS" | "S" | "M" | "L" | "XL";
+}
+
+export interface AcademyGuardianInfo {
+  guardianNameEn: string;
+  guardianNameAr: string;
+  relationship: "father" | "mother" | "legal_guardian" | "other";
+  qidOrPassport: string;
+  phone: string;
+  whatsapp: string;
+  email: string;
+  emergencyContactName: string;
+  emergencyContactPhone: string;
+  emergencyRelationship: string;
+}
+
+export interface AcademyMedicalDeclaration {
+  hasMedicalConditions: boolean;
+  conditionsDescription?: string;
+  hasAllergies: boolean;
+  allergiesDescription?: string;
+  takingRegularMedication: boolean;
+  medicationDetails?: string;
+  previousInjuriesOrSurgeries?: string;
+  physicalLimitations?: string;
+  bloodType?: string;
+  consentToEmergencyMedicalCare: boolean;
+}
+
+export interface AcademyUploadedDocuments {
+  playerPhotoUrl?: string;
+  playerPhotoName?: string;
+  qidOrPassportFrontUrl?: string;
+  qidOrPassportFrontName?: string;
+  qidOrPassportBackUrl?: string;
+  qidOrPassportBackName?: string;
+  birthCertificateUrl?: string;
+  birthCertificateName?: string;
+  medicalFitnessCertUrl?: string;
+  medicalFitnessCertName?: string;
+}
+
+export interface AcademyRegistration {
+  id: string; // e.g. "QSC-ACAD-2026-0001"
+  sportId: AcademySportId;
+  programId: string;
+  ageGroup: AcademyAgeGroup;
+  player: AcademyPlayerInfo;
+  guardian: AcademyGuardianInfo;
+  medical: AcademyMedicalDeclaration;
+  documents: AcademyUploadedDocuments;
+  status: AcademyRegistrationStatus;
+  paymentStatus: "unpaid" | "partial" | "verified";
+  paidAmountQar: number;
+  totalFeeQar: number;
+  paymentMethod?: "card" | "bank_transfer" | "cash_counter";
+  paymentReference?: string;
+  assignedCoach?: string;
+  assignedGroup?: string;
+  rejectionReason?: string;
+  medicalClearanceNotes?: string;
+  isMedicalCleared: boolean;
+  internalNotes?: string;
+  submittedAt: string;
+  updatedAt: string;
+  verifiedBy?: string;
+  verificationHash: string;
 }
 
 export interface OrgNode {

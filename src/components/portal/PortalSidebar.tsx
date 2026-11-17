@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Settings,
   History,
+  GraduationCap,
   X,
   ExternalLink,
 } from "lucide-react";
@@ -35,7 +36,7 @@ export function PortalSidebar({ isOpen, onClose }: PortalSidebarProps) {
   const pathname = usePathname();
   const { t, isArabic } = useLanguage();
   const { canManageUsers, canAccessReports, canAccessAuditLogs, user } = useAuth();
-  const { applications, signatures, unreadNotificationsCount } = usePortalData();
+  const { applications, signatures, unreadNotificationsCount, pendingAcademyCount } = usePortalData();
 
   const pendingApprovalsCount = applications.filter((a) => a.status === "under_review").length;
   const pendingSignaturesCount = signatures.filter((s) => s.status === "pending").length;
@@ -50,6 +51,13 @@ export function PortalSidebar({ isOpen, onClose }: PortalSidebarProps) {
           label: t.nav.dashboard,
           icon: LayoutDashboard,
           badge: null,
+        },
+        {
+          href: "/portal/academy",
+          label: t.nav.academy,
+          icon: GraduationCap,
+          badge: pendingAcademyCount > 0 ? pendingAcademyCount : null,
+          badgeColor: "bg-qsc-yellow text-black font-extrabold",
         },
         {
           href: "/portal/applications/my",

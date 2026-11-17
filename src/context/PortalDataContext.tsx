@@ -11,6 +11,8 @@ import {
   AuditLogItem,
   ApplicationCategory,
   ApplicationPriority,
+  AcademyRegistration,
+  AcademyRegistrationStatus,
 } from "@/lib/types";
 import {
   INITIAL_APPLICATIONS,
@@ -21,6 +23,7 @@ import {
   INITIAL_NOTIFICATIONS,
   INITIAL_AUDIT_LOGS,
 } from "@/lib/data";
+import { INITIAL_ACADEMY_REGISTRATIONS, generateAcademyApplicationId } from "@/lib/academyData";
 import { useAuth } from "./AuthContext";
 
 interface PortalDataContextType {
@@ -32,6 +35,16 @@ interface PortalDataContextType {
   notifications: NotificationItem[];
   auditLogs: AuditLogItem[];
   unreadNotificationsCount: number;
+
+  // Youth Sports Academy
+  academyRegistrations: AcademyRegistration[];
+  pendingAcademyCount: number;
+  registerAcademyApplicant: (data: Omit<AcademyRegistration, "id" | "status" | "submittedAt" | "updatedAt" | "verificationHash" | "isMedicalCleared" | "paidAmountQar">) => Promise<AcademyRegistration>;
+  updateAcademyApplicationStatus: (id: string, status: AcademyRegistrationStatus, internalNotes?: string, rejectionReason?: string) => void;
+  updateAcademyMedicalClearance: (id: string, isCleared: boolean, notes?: string) => void;
+  updateAcademyPaymentStatus: (id: string, paymentStatus: "unpaid" | "partial" | "verified", paidAmountQar?: number, method?: "card" | "bank_transfer" | "cash_counter", ref?: string) => void;
+  assignAcademyCoachAndGroup: (id: string, coachName: string, groupName: string) => void;
+  addAcademyInternalNote: (id: string, note: string) => void;
   
   // Applications Actions
   createApplication: (appData: {
@@ -89,6 +102,7 @@ export function PortalDataProvider({ children }: { children: React.ReactNode }) 
   const [meetings, setMeetings] = useState<MeetingItem[]>(INITIAL_MEETINGS);
   const [notifications, setNotifications] = useState<NotificationItem[]>(INITIAL_NOTIFICATIONS);
   const [auditLogs, setAuditLogs] = useState<AuditLogItem[]>(INITIAL_AUDIT_LOGS);
+  const [academyRegistrations, setAcademyRegistrations] = useState<AcademyRegistration[]>(INITIAL_ACADEMY_REGISTRATIONS);
 
   // Load from localStorage on client mount
   useEffect(() => {
@@ -113,6 +127,9 @@ export function PortalDataProvider({ children }: { children: React.ReactNode }) 
 
       const savedLogs = localStorage.getItem("qsc_audit_logs");
       if (savedLogs) setAuditLogs(JSON.parse(savedLogs));
+
+      const savedAcademy = localStorage.getItem("qsc_academy_regs");
+      if (savedAcademy) setAcademyRegistrations(JSON.parse(savedAcademy));
     } catch {
       // Fallback silently to defaults
     }
@@ -576,8 +593,211 @@ export function PortalDataProvider({ children }: { children: React.ReactNode }) 
     setMeetings(INITIAL_MEETINGS);
     setNotifications(INITIAL_NOTIFICATIONS);
     setAuditLogs(INITIAL_AUDIT_LOGS);
+    setAcademyRegistrations(INITIAL_ACADEMY_REGISTRATIONS);
     localStorage.clear();
   };
+
+  // ==========================================
+  // ACADEMY ACTIONS
+  // ==========================================
+
+  const registerAcademyApplicant = async (
+    data: Omit<
+      AcademyRegistration,
+      | "id"
+      | "status"
+      | "submittedAt"
+      | "updatedAt"
+      | "verificationHash"
+      | "isMedicalCleared"
+      | "paidAmountQar"
+    >
+  ): Promise<AcademyRegistration> => {
+    const newId = generateAcademyApplicationId();
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+    const hash = `sha256-${Math.random().toString(36).substring(2, 10)}${Date.now().toString(36)}`;
+
+    const newRecord: AcademyRegistration = {
+      ...data,
+      id: newId,
+      status: "pending",
+      paymentStatus: "unpaid",
+      paidAmountQar: 0,
+      isMedicalCleared: false,
+      submittedAt: timestamp,
+      updatedAt: timestamp,
+      verificationHash: hash,
+    };
+
+    setAcademyRegistrations((prev) => {
+      const updated = [newRecord, ...prev];
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+
+    addAuditLog(
+      `Academy Registration Submitted: ${newId} (${data.player.fullNameEn})`,
+      "academy",
+      newId,
+      `Program: ${data.sportId.toUpperCase()} (${data.ageGroup.toUpperCase()}) - Guardian: ${data.guardian.guardianNameEn}`
+    );
+
+    return newRecord;
+  };
+
+  const updateAcademyApplicationStatus = (
+    id: string,
+    status: AcademyRegistrationStatus,
+    internalNotes?: string,
+    rejectionReason?: string
+  ) => {
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    setAcademyRegistrations((prev) => {
+      const updated = prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            status,
+            rejectionReason: rejectionReason ?? item.rejectionReason,
+            internalNotes: internalNotes
+              ? `${item.internalNotes ? item.internalNotes + " | " : ""}${internalNotes}`
+              : item.internalNotes,
+            updatedAt: timestamp,
+            verifiedBy: user ? `${user.nameEn} (${user.role})` : item.verifiedBy,
+          };
+        }
+        return item;
+      });
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+
+    addAuditLog(
+      `Academy Application Status Updated: ${id} -> ${status.toUpperCase()}`,
+      "academy",
+      id,
+      `Updated by ${user?.nameEn || "Authorized Officer"}${rejectionReason ? ` - Reason: ${rejectionReason}` : ""}`
+    );
+  };
+
+  const updateAcademyMedicalClearance = (id: string, isCleared: boolean, notes?: string) => {
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    setAcademyRegistrations((prev) => {
+      const updated = prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            isMedicalCleared: isCleared,
+            medicalClearanceNotes: notes ?? item.medicalClearanceNotes,
+            status: isCleared && item.status === "medical_pending" ? "under_review" : item.status,
+            updatedAt: timestamp,
+          };
+        }
+        return item;
+      });
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+
+    addAuditLog(
+      `Academy Medical Clearance: ${id} -> ${isCleared ? "CLEARED" : "FLAGGED"}`,
+      "academy",
+      id,
+      notes || "Sports Medicine Medical Assessment Updated"
+    );
+  };
+
+  const updateAcademyPaymentStatus = (
+    id: string,
+    paymentStatus: "unpaid" | "partial" | "verified",
+    paidAmountQar?: number,
+    method?: "card" | "bank_transfer" | "cash_counter",
+    ref?: string
+  ) => {
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    setAcademyRegistrations((prev) => {
+      const updated = prev.map((item) => {
+        if (item.id === id) {
+          const finalPaid = paidAmountQar !== undefined ? paidAmountQar : item.totalFeeQar;
+          return {
+            ...item,
+            paymentStatus,
+            paidAmountQar: finalPaid,
+            paymentMethod: method ?? item.paymentMethod,
+            paymentReference: ref ?? item.paymentReference,
+            status:
+              paymentStatus === "verified" && (item.status === "payment_pending" || item.status === "approved")
+                ? "approved"
+                : item.status,
+            updatedAt: timestamp,
+          };
+        }
+        return item;
+      });
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+
+    addAuditLog(
+      `Academy Payment Updated: ${id} -> ${paymentStatus.toUpperCase()}`,
+      "academy",
+      id,
+      `Amount: QAR ${paidAmountQar ?? "Full"} - Method: ${method || "Standard"} - Ref: ${ref || "N/A"}`
+    );
+  };
+
+  const assignAcademyCoachAndGroup = (id: string, coachName: string, groupName: string) => {
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    setAcademyRegistrations((prev) => {
+      const updated = prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            assignedCoach: coachName,
+            assignedGroup: groupName,
+            updatedAt: timestamp,
+          };
+        }
+        return item;
+      });
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+
+    addAuditLog(
+      `Academy Coach & Group Assigned: ${id}`,
+      "academy",
+      id,
+      `Coach: ${coachName} - Group: ${groupName}`
+    );
+  };
+
+  const addAcademyInternalNote = (id: string, note: string) => {
+    const timestamp = new Date().toISOString().replace("T", " ").substring(0, 16);
+
+    setAcademyRegistrations((prev) => {
+      const updated = prev.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            internalNotes: item.internalNotes ? `${item.internalNotes}\n[${timestamp}] ${note}` : `[${timestamp}] ${note}`,
+            updatedAt: timestamp,
+          };
+        }
+        return item;
+      });
+      persist("qsc_academy_regs", updated);
+      return updated;
+    });
+  };
+
+  const pendingAcademyCount = academyRegistrations.filter(
+    (a) => a.status === "pending" || a.status === "under_review" || a.status === "medical_pending"
+  ).length;
 
   const unreadNotificationsCount = notifications.filter((n) => !n.read).length;
 
@@ -592,6 +812,14 @@ export function PortalDataProvider({ children }: { children: React.ReactNode }) 
         notifications,
         auditLogs,
         unreadNotificationsCount,
+        academyRegistrations,
+        pendingAcademyCount,
+        registerAcademyApplicant,
+        updateAcademyApplicationStatus,
+        updateAcademyMedicalClearance,
+        updateAcademyPaymentStatus,
+        assignAcademyCoachAndGroup,
+        addAcademyInternalNote,
         createApplication,
         approveWorkflowStep,
         rejectWorkflowStep,
