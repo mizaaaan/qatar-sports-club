@@ -110,22 +110,22 @@ export default function PublicAcademyPage() {
               </div>
 
               {/* Institutional Key Indicators */}
-              <div className="pt-8 grid grid-cols-3 gap-2 sm:gap-4 border-t border-neutral-800 max-w-lg mx-auto lg:mx-0">
+              <div className="pt-8 grid grid-cols-3 gap-3 sm:gap-6 border-t border-neutral-800 max-w-xl mx-auto lg:mx-0">
                 <div>
-                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-qsc-yellow">5</p>
-                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl xl:text-3xl font-black text-qsc-yellow whitespace-nowrap">5</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-1">
                     {isArabic ? "أكاديميات رياضية معتمدة" : "Official Sports Academies"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-white">AFC / QFA</p>
-                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl xl:text-3xl font-black text-white whitespace-nowrap">AFC / QFA</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-1">
                     {isArabic ? "شهادات تدريب أولمبية" : "Certified Master Coaches"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-qsc-yellow">U-7 → U-18</p>
-                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl xl:text-3xl font-black text-qsc-yellow whitespace-nowrap">U-7 → U-18</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-1">
                     {isArabic ? "مسار النخبة المكتمل" : "Complete Youth Pathway"}
                   </p>
                 </div>
