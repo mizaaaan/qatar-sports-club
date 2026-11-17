@@ -201,69 +201,37 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-neutral-800 bg-[#0E0E0E] px-4 pt-4 pb-6 space-y-3">
           <div className="grid grid-cols-1 gap-1">
-            <Link
-              href="/management"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.home}
-            </Link>
-            <Link
-              href="/management/leadership"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.leadership}
-            </Link>
-            <Link
-              href="/management/board"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.board}
-            </Link>
-            <Link
-              href="/management/executive"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.executive}
-            </Link>
-            <Link
-              href="/management/departments"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.departments}
-            </Link>
-            <Link
-              href="/management/org-chart"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.orgChart}
-            </Link>
-            <Link
-              href="/academy"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-qsc-yellow font-bold hover:bg-neutral-800"
-            >
-              {t.nav.academy}
-            </Link>
-            <Link
-              href="/management/announcements"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.announcements}
-            </Link>
-            <Link
-              href="/management/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2.5 rounded-md text-sm font-medium text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
-            >
-              {t.nav.contact}
-            </Link>
+            {[
+              { href: "/management", label: t.home },
+              { href: "/management/leadership", label: t.nav.leadership },
+              { href: "/management/board", label: t.nav.board },
+              { href: "/management/executive", label: t.nav.executive },
+              { href: "/management/departments", label: t.nav.departments },
+              { href: "/management/org-chart", label: t.nav.orgChart },
+              { href: "/academy", label: t.nav.academy },
+              { href: "/management/announcements", label: t.nav.announcements },
+              { href: "/management/contact", label: t.nav.contact },
+            ].map((link) => {
+              const isActive =
+                link.href === "/management"
+                  ? pathname === "/management" || pathname === "/"
+                  : pathname === link.href;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-qsc-yellow font-bold bg-white/5"
+                      : "text-neutral-200 hover:bg-neutral-800 hover:text-qsc-yellow"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="pt-3 border-t border-neutral-800">
