@@ -112,20 +112,20 @@ export default function PublicAcademyPage() {
               {/* Institutional Key Indicators */}
               <div className="pt-8 grid grid-cols-3 gap-2 sm:gap-4 border-t border-neutral-800 max-w-lg mx-auto lg:mx-0">
                 <div>
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-qsc-yellow">5</p>
-                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-qsc-yellow">5</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
                     {isArabic ? "أكاديميات رياضية معتمدة" : "Official Sports Academies"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-white">AFC / QFA</p>
-                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-white">AFC / QFA</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
                     {isArabic ? "شهادات تدريب أولمبية" : "Certified Master Coaches"}
                   </p>
                 </div>
                 <div>
-                  <p className="text-xl sm:text-2xl lg:text-3xl font-black text-qsc-yellow">U-7 → U-18</p>
-                  <p className="text-[11px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
+                  <p className="text-lg sm:text-2xl lg:text-3xl font-black text-qsc-yellow">U-7 → U-18</p>
+                  <p className="text-[10px] sm:text-xs text-neutral-400 font-medium leading-tight mt-0.5">
                     {isArabic ? "مسار النخبة المكتمل" : "Complete Youth Pathway"}
                   </p>
                 </div>
@@ -134,7 +134,7 @@ export default function PublicAcademyPage() {
 
             {/* Right Column: Visual Academy Crest Card */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-md bg-gradient-to-b from-[#161616] to-[#0E0E0E] p-8 rounded-3xl border border-neutral-800 shadow-2xl space-y-6">
+              <div className="relative w-full max-w-md bg-gradient-to-b from-[#161616] to-[#0E0E0E] p-5 sm:p-8 rounded-3xl border border-neutral-800 shadow-2xl space-y-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-qsc-yellow animate-ping" />
@@ -293,7 +293,7 @@ export default function PublicAcademyPage() {
         </div>
 
         {/* Selected Sport Overview Banner */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#141414] via-[#161616] to-[#121212] border border-neutral-800 space-y-4">
+        <div className="p-5 sm:p-8 rounded-2xl bg-gradient-to-r from-[#141414] via-[#161616] to-[#121212] border border-neutral-800 space-y-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-qsc-yellow block mb-1">

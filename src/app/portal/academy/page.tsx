@@ -308,28 +308,28 @@ export default function ExecutiveAcademyManagementPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             type="button"
             onClick={handleExportCsv}
-            className="px-4 py-2 rounded-xl bg-[#1A1A1A] hover:bg-[#262626] border border-neutral-700 text-xs font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+            className="flex-1 sm:flex-none justify-center px-3.5 sm:px-4 py-2 rounded-xl bg-[#1A1A1A] hover:bg-[#262626] border border-neutral-700 text-xs font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-sm"
           >
-            <Download className="w-4 h-4 text-qsc-yellow" />
-            <span>{t.academy.exportCsv}</span>
+            <Download className="w-4 h-4 text-qsc-yellow flex-shrink-0" />
+            <span className="truncate">{t.academy.exportCsv}</span>
           </button>
           <button
             type="button"
             onClick={handlePrintTable}
-            className="px-4 py-2 rounded-xl bg-[#1A1A1A] hover:bg-[#262626] border border-neutral-700 text-xs font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-sm"
+            className="flex-1 sm:flex-none justify-center px-3.5 sm:px-4 py-2 rounded-xl bg-[#1A1A1A] hover:bg-[#262626] border border-neutral-700 text-xs font-bold text-white transition-all flex items-center gap-2 cursor-pointer shadow-sm"
           >
-            <Printer className="w-4 h-4 text-neutral-300" />
-            <span>{t.academy.printRoster}</span>
+            <Printer className="w-4 h-4 text-neutral-300 flex-shrink-0" />
+            <span className="truncate">{t.academy.printRoster}</span>
           </button>
         </div>
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-8 gap-3">
         <div className="p-4 rounded-xl bg-[#141414] border border-neutral-800">
           <span className="text-[10px] text-neutral-400 uppercase font-bold block truncate">
             {t.academy.kpiTotal}
@@ -398,7 +398,7 @@ export default function ExecutiveAcademyManagementPage() {
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-wrap text-xs">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap text-xs w-full md:w-auto">
           {/* Sport Filter */}
           <select
             value={sportFilter}
@@ -406,7 +406,7 @@ export default function ExecutiveAcademyManagementPage() {
               setSportFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
           >
             <option value="all">{t.academy.allSports}</option>
             <option value="football">Football</option>
@@ -423,7 +423,7 @@ export default function ExecutiveAcademyManagementPage() {
               setAgeGroupFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
           >
             <option value="all">{t.academy.ageGroups}: All</option>
             <option value="u7">U-7 (Grassroots)</option>
@@ -439,7 +439,7 @@ export default function ExecutiveAcademyManagementPage() {
               setStatusFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="w-full sm:w-auto bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
           >
             <option value="all">{t.academy.filterStatus}: All</option>
             <option value="pending">Pending</option>
@@ -539,7 +539,7 @@ export default function ExecutiveAcademyManagementPage() {
         </div>
 
         {/* Pagination Controls */}
-        <div className="px-5 py-4 border-t border-neutral-800 bg-[#161616] flex items-center justify-between text-xs text-neutral-400">
+        <div className="px-5 py-4 border-t border-neutral-800 bg-[#161616] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-neutral-400">
           <div>
             Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
             {Math.min(currentPage * itemsPerPage, filteredRegistrations.length)} of{" "}
@@ -572,7 +572,7 @@ export default function ExecutiveAcademyManagementPage() {
       {/* Slide-out Application Inspection Drawer */}
       {drawerOpen && selectedApp && (
         <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="w-full max-w-2xl bg-[#111111] border-l rtl:border-l-0 rtl:border-r border-neutral-800 h-full overflow-y-auto flex flex-col justify-between shadow-2xl p-6 sm:p-8 space-y-6">
+          <div className="w-full max-w-2xl bg-[#111111] border-l rtl:border-l-0 rtl:border-r border-neutral-800 h-full overflow-y-auto flex flex-col justify-between shadow-2xl p-4 sm:p-6 lg:p-8 space-y-6">
             <div className="space-y-6">
               {/* Drawer Top */}
               <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
@@ -855,38 +855,38 @@ export default function ExecutiveAcademyManagementPage() {
               )}
 
               {/* Action Buttons Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-bold">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px] sm:text-xs font-bold">
                 <button
                   type="button"
                   onClick={() => setActionType("approve")}
-                  className="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="py-2.5 px-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md text-center"
                 >
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>{t.academy.approveApp}</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{t.academy.approveApp}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActionType("medical")}
-                  className="py-2.5 px-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="py-2.5 px-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md text-center"
                 >
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>{t.academy.clearMedical}</span>
+                  <ShieldCheck className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{t.academy.clearMedical}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActionType("payment")}
-                  className="py-2.5 px-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md"
+                  className="py-2.5 px-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md text-center"
                 >
-                  <CreditCard className="w-4 h-4" />
-                  <span>{t.academy.verifyPayment}</span>
+                  <CreditCard className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{t.academy.verifyPayment}</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActionType("coach")}
-                  className="py-2.5 px-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-black transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md font-extrabold"
+                  className="py-2.5 px-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-md font-extrabold text-center"
                 >
-                  <UserCheck className="w-4 h-4" />
-                  <span>{t.academy.assignCoach}</span>
+                  <UserCheck className="w-3.5 h-3.5 flex-shrink-0" />
+                  <span className="truncate">{t.academy.assignCoach}</span>
                 </button>
               </div>
 
@@ -894,14 +894,14 @@ export default function ExecutiveAcademyManagementPage() {
                 <button
                   type="button"
                   onClick={() => setActionType("waitlist")}
-                  className="px-3 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 font-bold"
+                  className="flex-1 text-center px-3 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 font-bold truncate cursor-pointer"
                 >
                   {t.academy.waitlistApp}
                 </button>
                 <button
                   type="button"
                   onClick={() => setActionType("reject")}
-                  className="px-3 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-bold"
+                  className="flex-1 text-center px-3 py-2 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 font-bold truncate cursor-pointer"
                 >
                   {t.academy.rejectApp}
                 </button>

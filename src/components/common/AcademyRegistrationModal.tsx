@@ -213,7 +213,7 @@ export function AcademyRegistrationModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200">
       <div className="relative w-full max-w-4xl bg-[#111111] border border-neutral-800 rounded-2xl shadow-2xl text-white overflow-hidden my-auto flex flex-col max-h-[92vh]">
         {/* Modal Top Strip */}
-        <div className="bg-[#161616] border-b border-neutral-800 px-6 py-4 flex items-center justify-between flex-shrink-0">
+        <div className="bg-[#161616] border-b border-neutral-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between flex-shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-qsc-yellow/10 border border-qsc-yellow/30 flex items-center justify-center text-qsc-yellow">
               <ShieldCheck className="w-5 h-5" />
@@ -239,7 +239,7 @@ export function AcademyRegistrationModal({
 
         {/* Step Progress Bar (Hidden on step 7) */}
         {step <= 6 && (
-          <div className="bg-[#141414] border-b border-neutral-800/80 px-4 sm:px-8 py-3 flex-shrink-0">
+          <div className="bg-[#141414] border-b border-neutral-800/80 px-4 sm:px-8 py-2.5 sm:py-3 flex-shrink-0">
             <div className="grid grid-cols-6 gap-2 items-center">
               {[1, 2, 3, 4, 5, 6].map((s) => (
                 <div key={s} className="flex flex-col gap-1.5">
@@ -271,7 +271,7 @@ export function AcademyRegistrationModal({
         )}
 
         {/* Content Body */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
+        <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-6 flex-1">
           {errorMessage && (
             <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-xs sm:text-sm flex items-center gap-3">
               <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-400" />
@@ -286,7 +286,7 @@ export function AcademyRegistrationModal({
                 <label className="text-xs font-bold text-neutral-300 uppercase tracking-wider block mb-3">
                   1. {t.academy.allSports}
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
                   {ACADEMY_SPORTS.map((sport) => {
                     const isSelected = selectedSport === sport.id;
                     return (
@@ -981,10 +981,10 @@ export function AcademyRegistrationModal({
             <div className="space-y-6 animate-in zoom-in-95 duration-200">
               <div
                 id="printable-academy-receipt"
-                className="bg-white text-black p-6 sm:p-8 rounded-2xl shadow-xl border border-neutral-300 print:border-none print:shadow-none print:p-0"
+                className="bg-white text-black p-4 sm:p-8 rounded-2xl shadow-xl border border-neutral-300 print:border-none print:shadow-none print:p-0"
               >
                 {/* Header Strip */}
-                <div className="flex items-center justify-between border-b-2 border-black pb-4 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b-2 border-black pb-4 mb-6">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-14 relative flex-shrink-0">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1007,7 +1007,7 @@ export function AcademyRegistrationModal({
                     </div>
                   </div>
 
-                  <div className="text-right rtl:text-left">
+                  <div className="text-left sm:text-right rtl:text-right rtl:sm:text-left">
                     <span className="text-[10px] font-bold text-neutral-500 uppercase block">
                       Application ID
                     </span>
@@ -1036,7 +1036,7 @@ export function AcademyRegistrationModal({
                 </div>
 
                 {/* Details Grid */}
-                <div className="grid grid-cols-2 gap-4 text-xs mb-6 pb-6 border-b border-neutral-300">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs mb-6 pb-6 border-b border-neutral-300">
                   <div>
                     <span className="text-neutral-500 block uppercase font-bold text-[10px]">
                       Player Profile
@@ -1091,8 +1091,8 @@ export function AcademyRegistrationModal({
                 </div>
 
                 {/* Footer with QR Code */}
-                <div className="flex items-center justify-between pt-2">
-                  <div className="space-y-1 max-w-sm">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4 pt-2">
+                  <div className="space-y-1 max-w-sm text-center sm:text-left rtl:sm:text-right">
                     <p className="text-[10px] text-neutral-500 uppercase tracking-wider font-bold">
                       Digital Authentication
                     </p>
@@ -1137,7 +1137,7 @@ export function AcademyRegistrationModal({
 
         {/* Modal Footer Controls (Hidden on step 7) */}
         {step <= 6 && (
-          <div className="bg-[#161616] border-t border-neutral-800 px-6 py-4 flex items-center justify-between flex-shrink-0">
+          <div className="bg-[#161616] border-t border-neutral-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between flex-shrink-0">
             {step > 1 ? (
               <button
                 type="button"
