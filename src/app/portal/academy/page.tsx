@@ -393,7 +393,7 @@ export default function ExecutiveAcademyManagementPage() {
               setCurrentPage(1);
             }}
             placeholder={t.academy.searchPlaceholder}
-            className="w-full bg-[#1e1e1e] border border-neutral-700 rounded-xl pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow"
+            className="w-full bg-[#1e1e1e] border border-neutral-700 rounded-xl pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-2.5 text-[16px] sm:text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px] sm:min-h-0"
           />
         </div>
 
@@ -406,7 +406,7 @@ export default function ExecutiveAcademyManagementPage() {
               setSportFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-[16px] sm:text-xs text-neutral-300 focus:outline-none focus:border-qsc-yellow min-h-[44px] sm:min-h-0"
           >
             <option value="all">{t.academy.allSports}</option>
             <option value="football">Football</option>
@@ -423,7 +423,7 @@ export default function ExecutiveAcademyManagementPage() {
               setAgeGroupFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="flex-1 sm:flex-none bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-[16px] sm:text-xs text-neutral-300 focus:outline-none focus:border-qsc-yellow min-h-[44px] sm:min-h-0"
           >
             <option value="all">{t.academy.ageGroups}: All</option>
             <option value="u7">U-7 (Grassroots)</option>
@@ -439,7 +439,7 @@ export default function ExecutiveAcademyManagementPage() {
               setStatusFilter(e.target.value);
               setCurrentPage(1);
             }}
-            className="w-full sm:w-auto bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-neutral-300 focus:outline-none focus:border-qsc-yellow"
+            className="w-full sm:w-auto bg-[#1e1e1e] border border-neutral-700 rounded-xl px-3 py-2.5 text-[16px] sm:text-xs text-neutral-300 focus:outline-none focus:border-qsc-yellow min-h-[44px] sm:min-h-0"
           >
             <option value="all">{t.academy.filterStatus}: All</option>
             <option value="pending">Pending</option>

@@ -392,7 +392,7 @@ export function AcademyRegistrationModal({
                     value={playerInfo.fullNameEn}
                     onChange={(e) => setPlayerInfo({ ...playerInfo, fullNameEn: e.target.value })}
                     placeholder="e.g. Nasser Saud Al-Kuwari"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                   />
                 </div>
                 <div>
@@ -405,7 +405,7 @@ export function AcademyRegistrationModal({
                     onChange={(e) => setPlayerInfo({ ...playerInfo, fullNameAr: e.target.value })}
                     placeholder="مثال: ناصر سعود الكواري"
                     dir="rtl"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                   />
                 </div>
               </div>
@@ -415,13 +415,21 @@ export function AcademyRegistrationModal({
                   <label className="text-xs font-bold text-neutral-300 block mb-1">
                     {t.academy.dateOfBirth} *
                   </label>
-                  <input
-                    type="date"
-                    required
-                    value={playerInfo.dateOfBirth}
-                    onChange={(e) => setPlayerInfo({ ...playerInfo, dateOfBirth: e.target.value })}
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
-                  />
+                  <div className="relative flex items-center">
+                    <input
+                      type="date"
+                      required
+                      value={playerInfo.dateOfBirth}
+                      onChange={(e) => setPlayerInfo({ ...playerInfo, dateOfBirth: e.target.value })}
+                      className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-qsc-yellow [color-scheme:dark] min-h-[44px] cursor-pointer"
+                    />
+                    {!playerInfo.dateOfBirth && (
+                      <span className="absolute left-3.5 rtl:left-auto rtl:right-3.5 top-1/2 -translate-y-1/2 text-[15px] sm:text-sm text-neutral-500 pointer-events-none select-none">
+                        {isArabic ? "يوم / شهر / سنة" : "YYYY-MM-DD"}
+                      </span>
+                    )}
+                    <Calendar className="w-4 h-4 text-qsc-yellow absolute right-3.5 rtl:right-auto rtl:left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  </div>
                 </div>
                 <div>
                   <label className="text-xs font-bold text-neutral-300 block mb-1">
@@ -432,7 +440,7 @@ export function AcademyRegistrationModal({
                     onChange={(e) =>
                       setPlayerInfo({ ...playerInfo, gender: e.target.value as "male" | "female" })
                     }
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-qsc-yellow min-h-[44px] cursor-pointer"
                   >
                     <option value="male">{t.academy.male}</option>
                     <option value="female">{t.academy.female}</option>
@@ -447,7 +455,7 @@ export function AcademyRegistrationModal({
                     required
                     value={playerInfo.nationalityEn}
                     onChange={(e) => setPlayerInfo({ ...playerInfo, nationalityEn: e.target.value })}
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                   />
                 </div>
               </div>
@@ -463,7 +471,7 @@ export function AcademyRegistrationModal({
                     value={playerInfo.qidOrPassport}
                     onChange={(e) => setPlayerInfo({ ...playerInfo, qidOrPassport: e.target.value })}
                     placeholder="11-digit QID e.g. 31663400192"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow font-mono"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow font-mono min-h-[44px]"
                   />
                 </div>
                 <div>
@@ -475,7 +483,7 @@ export function AcademyRegistrationModal({
                     onChange={(e) =>
                       setPlayerInfo({ ...playerInfo, jerseySize: e.target.value as "XS" | "S" | "M" | "L" | "XL" })
                     }
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-qsc-yellow min-h-[44px] cursor-pointer"
                   >
                     <option value="XS">XS (Age 4-6)</option>
                     <option value="S">S (Age 7-9)</option>
@@ -495,7 +503,7 @@ export function AcademyRegistrationModal({
                   value={playerInfo.schoolNameEn}
                   onChange={(e) => setPlayerInfo({ ...playerInfo, schoolNameEn: e.target.value })}
                   placeholder="e.g. Qatar Academy Doha / Doha College"
-                  className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                  className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                 />
               </div>
 
@@ -508,7 +516,7 @@ export function AcademyRegistrationModal({
                   value={playerInfo.previousExperienceEn}
                   onChange={(e) => setPlayerInfo({ ...playerInfo, previousExperienceEn: e.target.value })}
                   placeholder="Detail previous clubs, school tournament awards, or preferred positions..."
-                  className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                  className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow"
                 />
               </div>
             </div>
@@ -528,7 +536,7 @@ export function AcademyRegistrationModal({
                     value={guardianInfo.guardianNameEn}
                     onChange={(e) => setGuardianInfo({ ...guardianInfo, guardianNameEn: e.target.value })}
                     placeholder="e.g. Saud Nasser Al-Kuwari"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                   />
                 </div>
                 <div>
@@ -543,7 +551,7 @@ export function AcademyRegistrationModal({
                         relationship: e.target.value as "father" | "mother" | "legal_guardian" | "other",
                       })
                     }
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white focus:outline-none focus:border-qsc-yellow min-h-[44px] cursor-pointer"
                   >
                     <option value="father">{t.academy.father}</option>
                     <option value="mother">{t.academy.mother}</option>
@@ -563,7 +571,7 @@ export function AcademyRegistrationModal({
                     value={guardianInfo.phone}
                     onChange={(e) => setGuardianInfo({ ...guardianInfo, phone: e.target.value })}
                     placeholder="+974 5512 8844"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow font-mono"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow font-mono min-h-[44px]"
                   />
                 </div>
                 <div>
@@ -575,7 +583,7 @@ export function AcademyRegistrationModal({
                     value={guardianInfo.whatsapp}
                     onChange={(e) => setGuardianInfo({ ...guardianInfo, whatsapp: e.target.value })}
                     placeholder="+974 5512 8844"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow font-mono"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow font-mono min-h-[44px]"
                   />
                 </div>
                 <div>
@@ -588,7 +596,7 @@ export function AcademyRegistrationModal({
                     value={guardianInfo.email}
                     onChange={(e) => setGuardianInfo({ ...guardianInfo, email: e.target.value })}
                     placeholder="guardian@example.qa"
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-qsc-yellow"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-qsc-yellow min-h-[44px]"
                   />
                 </div>
               </div>
@@ -609,7 +617,7 @@ export function AcademyRegistrationModal({
                         setGuardianInfo({ ...guardianInfo, emergencyContactName: e.target.value })
                       }
                       placeholder="e.g. Aisha Al-Kuwari"
-                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white"
+                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500 min-h-[44px] sm:min-h-0"
                     />
                   </div>
                   <div>
@@ -623,7 +631,7 @@ export function AcademyRegistrationModal({
                         setGuardianInfo({ ...guardianInfo, emergencyContactPhone: e.target.value })
                       }
                       placeholder="+974 5599 3322"
-                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white font-mono"
+                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500 font-mono min-h-[44px] sm:min-h-0"
                     />
                   </div>
                   <div>
@@ -637,7 +645,7 @@ export function AcademyRegistrationModal({
                         setGuardianInfo({ ...guardianInfo, emergencyRelationship: e.target.value })
                       }
                       placeholder="e.g. Mother / Uncle"
-                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white"
+                      className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500 min-h-[44px] sm:min-h-0"
                     />
                   </div>
                 </div>
@@ -664,7 +672,7 @@ export function AcademyRegistrationModal({
                     onChange={(e) =>
                       setMedicalInfo({ ...medicalInfo, hasMedicalConditions: e.target.checked })
                     }
-                    className="w-5 h-5 accent-qsc-yellow cursor-pointer"
+                    className="w-5 h-5 accent-qsc-yellow cursor-pointer flex-shrink-0"
                   />
                 </div>
                 {medicalInfo.hasMedicalConditions && (
@@ -675,7 +683,7 @@ export function AcademyRegistrationModal({
                       setMedicalInfo({ ...medicalInfo, conditionsDescription: e.target.value })
                     }
                     placeholder="Describe condition and physician precautions..."
-                    className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white"
+                    className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500 min-h-[44px] sm:min-h-0"
                   />
                 )}
 
@@ -694,7 +702,7 @@ export function AcademyRegistrationModal({
                     onChange={(e) =>
                       setMedicalInfo({ ...medicalInfo, hasAllergies: e.target.checked })
                     }
-                    className="w-5 h-5 accent-qsc-yellow cursor-pointer"
+                    className="w-5 h-5 accent-qsc-yellow cursor-pointer flex-shrink-0"
                   />
                 </div>
                 {medicalInfo.hasAllergies && (
@@ -705,7 +713,7 @@ export function AcademyRegistrationModal({
                       setMedicalInfo({ ...medicalInfo, allergiesDescription: e.target.value })
                     }
                     placeholder="List specific allergies and treatment guidelines..."
-                    className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white"
+                    className="w-full bg-[#1a1a1a] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500 min-h-[44px] sm:min-h-0"
                   />
                 )}
               </div>
@@ -722,7 +730,7 @@ export function AcademyRegistrationModal({
                       setMedicalInfo({ ...medicalInfo, previousInjuriesOrSurgeries: e.target.value })
                     }
                     placeholder="Fractures, ligament tears, surgeries within the last 24 months..."
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3 py-2 text-xs text-white"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2 text-[16px] sm:text-xs text-white placeholder-neutral-500"
                   />
                 </div>
                 <div>
@@ -732,7 +740,7 @@ export function AcademyRegistrationModal({
                   <select
                     value={medicalInfo.bloodType}
                     onChange={(e) => setMedicalInfo({ ...medicalInfo, bloodType: e.target.value })}
-                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3 py-2.5 text-xs text-white"
+                    className="w-full bg-[#181818] border border-neutral-700 rounded-lg px-3.5 py-2.5 text-[16px] sm:text-xs text-white min-h-[44px] sm:min-h-0 cursor-pointer"
                   >
                     <option value="O+">O Positive (O+)</option>
                     <option value="O-">O Negative (O-)</option>
@@ -758,7 +766,7 @@ export function AcademyRegistrationModal({
                       consentToEmergencyMedicalCare: e.target.checked,
                     })
                   }
-                  className="w-5 h-5 accent-qsc-yellow mt-0.5 cursor-pointer"
+                  className="w-5 h-5 accent-qsc-yellow mt-0.5 cursor-pointer flex-shrink-0"
                 />
                 <p className="text-xs text-amber-200/90 leading-relaxed">
                   {t.academy.medicalConsent}
@@ -1142,7 +1150,7 @@ export function AcademyRegistrationModal({
               <button
                 type="button"
                 onClick={handlePrevStep}
-                className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-xs font-bold text-neutral-300 transition-all flex items-center gap-2 cursor-pointer"
+                className="px-4 py-2.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-xs sm:text-sm font-bold text-neutral-300 transition-all flex items-center gap-2 cursor-pointer min-h-[44px]"
               >
                 <ArrowIcon className="w-4 h-4 rotate-180" />
                 <span>{t.common.back}</span>
@@ -1155,7 +1163,7 @@ export function AcademyRegistrationModal({
               <button
                 type="button"
                 onClick={handleNextStep}
-                className="px-6 py-2.5 rounded-lg bg-qsc-yellow text-black font-extrabold text-xs uppercase tracking-wider hover:bg-white transition-all flex items-center gap-2 shadow-lg cursor-pointer"
+                className="px-6 py-2.5 rounded-lg bg-qsc-yellow text-black font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:bg-white transition-all flex items-center gap-2 shadow-lg cursor-pointer min-h-[44px]"
               >
                 <span>{t.common.next}</span>
                 <ArrowIcon className="w-4 h-4" />
@@ -1165,7 +1173,7 @@ export function AcademyRegistrationModal({
                 type="button"
                 disabled={isSubmitting || !termsAccepted}
                 onClick={handleFinalSubmit}
-                className="px-8 py-2.5 rounded-lg bg-qsc-yellow text-black font-black text-xs uppercase tracking-wider hover:bg-white disabled:opacity-50 transition-all flex items-center gap-2 shadow-xl cursor-pointer"
+                className="px-8 py-2.5 rounded-lg bg-qsc-yellow text-black font-black text-xs sm:text-sm uppercase tracking-wider hover:bg-white disabled:opacity-50 transition-all flex items-center gap-2 shadow-xl cursor-pointer min-h-[44px]"
               >
                 <Sparkles className="w-4 h-4" />
                 <span>{isSubmitting ? t.common.loading : t.academy.applyForProgram}</span>
